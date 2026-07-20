@@ -1,0 +1,168 @@
+.face {
+  background-color: var(--dark-sienna);
+  height: 100px;
+  width: 130px;
+  border-radius: 150% 150% 170% 170%;
+  position: relative;
+  left: 45px;
+  bottom: -10px;
+  z-index: 1;
+}
+
+.face-side {
+  height: 105px;
+  width: 125px;
+  border-radius: 100% 100% 40% 90%;
+  transform: rotate(-30deg);
+  background: radial-gradient(circle at 32% 60%, var( --dark-chestnut), var(--dark-sienna) 30%);
+  position: relative;
+  left: 50px;
+  bottom: -10px;
+  z-index: 1;
+  transform: scaleX(-1) rotate(-20deg);
+}
+
+.face::after {
+  content: '';
+  position: absolute;
+  bottom: 10px; /* ajusta a posição vertical do focinho */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px; /* largura do focinho, menor que a face */
+  height: 35px; /* altura/elevação do focinho */
+  background: radial-gradient(circle at 50% 40%, var( --dark-chestnut), var(--dark-sienna) 80%);/* mesma cor da face pra parecer contínuo */
+  border-radius: 50% 50% 60% 60%; /* forma arredondada, tipo bochecha/focinho */
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.08); 
+  z-index: -1; /* fica atrás da face, mas visível na borda inferior */
+}
+
+.face-side::after {
+  content: '';
+  position: absolute;
+  bottom: 10px; /* ajusta a posição vertical do focinho */
+  left: 50%;
+  width: 50px; /* largura do focinho, menor que a face */
+  height: 45px; /* altura/elevação do focinho */
+  background: radial-gradient(circle at 80% 30%, var( --dark-chestnut), var(--dark-sienna) 40%);/* mesma cor da face pra parecer contínuo */
+  border-radius: 50% 40% 100% 60%; /* forma arredondada, tipo bochecha/focinho */
+  transform: rotate(0deg) translate(40%, 22%);
+  z-index: 1; /* fica atrás da face, mas visível na borda inferior */
+}
+
+.ear-1-side,.ear-r-side{
+  width: 100px;
+  height: 90px;
+  position: relative;
+  background: linear-gradient(to top, var(--dark-sienna), var(--dark-sienna), var( --dark-chestnut));
+}
+.ear-1-side{
+  bottom: 35px;
+  left: -49px;
+  clip-path: polygon(14% 74%, 13% 60%, 14% 37%, 20% 9%, 36% 18%, 50% 30%, 63% 50%, 71% 73%, 56% 93%, 35% 95%, 19% 91%);
+  transform: scalex(-1) rotate(45deg);
+  background: linear-gradient(to top, var(--dark-sienna), var(--dark-puce), var( --dark-chestnut));
+}
+.ear-r-side{
+  bottom: 135px;
+  left: 10px;
+  clip-path:polygon(40% 50%, 50% 30%, 62% 18%, 76% 9%, 82% 37%, 84% 60%, 82% 74%, 78% 91%, 64% 95%, 46% 93%, 32% 73%);
+}
+/*
+.inner-1{
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #d36149;
+  border-left: 25px solid transparent;
+  right: 25px;
+  position: relative;  
+}
+.inner-2{
+  width: 0;
+  height: 0;
+  border-bottom: 50px solid #d36149;
+  border-right: 25px solid transparent;
+  position: relative;
+}
+*/
+.eye-1-side,.eye-r-side{
+  height: 36px;
+  width: 38px;
+  background-color: var(--bs-parchment); 
+   box-shadow: 
+    0 -10px 7px -0.5px rgba(0,0,0,0.1),
+    0 10px 8px -0.5px rgba(0,0,0,0.1); 
+  animation: eye-blink 2.5s ease-in-out infinite;
+  transform-origin: center;
+  position: relative; 
+  z-index: 2;
+
+}
+.eye-1-side{
+    bottom: 160px;
+    left: 72px;
+    border-radius: 30% 80%;
+}
+.eye-r-side{
+    bottom: 176px;
+    left: 75px;
+    border-radius: 80% 50%;
+    display: none;
+}
+.eyeball-side{
+  background-color: #252525;
+  height: 23px;
+  width: 12px;
+  border-radius: 70%;
+  position: relative;
+  top: 12px;
+  left: 25px;
+  animation: eyeball-blink 2.5s ease-in-out infinite;
+}
+.nose-side{
+  height: 0;
+  width: 0;
+  border-top: 9px solid #cb7998;
+  border-left: 3px solid transparent;
+  border-right: 9px solid transparent;
+  border-radius: 15px;
+  position: relative;
+  bottom: 120px;
+  left: 122px;  
+  border-radius: 5px;
+  transform: rotate(-132deg);
+  cursor: pointer;
+  z-index: 2;
+
+}
+.l1-side,.l2-side,.l3-side,.l4-side{
+  background-color: var(--bs-parchment);
+  width: 1px;
+  position: relative;
+}
+
+.l1-side{
+  transform: rotate(80deg);
+  height: 20px;
+  right: 17px;
+  bottom: 14px;  
+}
+.l2-side{
+  transform: rotate(20deg);
+  height: 44px;
+  left: 10px;  
+  bottom: 76px;
+}
+.l3-side{
+  transform: rotate(85deg);
+  height: 35px;
+  right: 35px;
+  bottom: 75px; 
+  display:none;
+}
+
+.l4-side{  
+  transform: rotate(12deg);
+  left: 2px;
+  bottom: 120px;
+  height: 35px;
+}

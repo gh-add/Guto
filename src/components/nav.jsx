@@ -1,40 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ScrollSpy } from 'bootstrap';
 
-
-
 const Nav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
-    const navbarShrink = () => {
-      const navbarCollapsible = document.querySelector('#mainNav');
-      if (!navbarCollapsible) return;
+    const navbarCollapsible = document.querySelector('#mainNav');
+    if (!navbarCollapsible) return;
 
-      if (window.scrollY === 0) {
-        navbarCollapsible.classList.remove('navbar-shrink');
-      } else {
-        navbarCollapsible.classList.add('navbar-shrink');
-      }
+    new ScrollSpy(document.body, { target: '#mainNav', rootMargin: '0px 0px -40%' });
+
+    const onScroll = () => {
+      navbarCollapsible.classList.toggle('navbar-scroll', window.scrollY > 0);
+      setIsOpen(false); // fecha o menu ao rolar
     };
 
-    // Ativa o ScrollSpy do Bootstrap
-    const mainNav = document.querySelector('#mainNav');
-    if (mainNav) {
-      new ScrollSpy(document.body, {
-        target: '#mainNav',
-        rootMargin: '0px 0px -40%',
-      });
-    }
-
-    // Executa uma vez ao carregar
-    navbarShrink();
-
-    // Adiciona listener de scroll
-    window.addEventListener('scroll', navbarShrink);
-
-    // Remove listener ao desmontar
-    return () => {
-      window.removeEventListener('scroll', navbarShrink);
-    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
@@ -44,15 +27,14 @@ const Nav = () => {
         <button
           className="navbar-toggler navbar-toggler-right"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
+          onClick={() => setIsOpen(!isOpen)}
           aria-controls="navbarResponsive"
-          aria-expanded="false"
+          aria-expanded={isOpen}
           aria-label="Toggle navigation"
         >
           <i className="bi bi-list"></i>
         </button>
-        <div className="collapse navbar-collapse" id="navbarResponsive">
+        <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarResponsive">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item"><a className="nav-link" href="#about">Sobre</a></li>
             <li className="nav-item"><a className="nav-link" href="#projects">Software</a></li>

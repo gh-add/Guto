@@ -5,6 +5,7 @@ import Cinegrafia from './components/session/cinegrafia.jsx'
 import Projects from './components/session/projects.jsx'
 import Musics from './components/session/musics.jsx'
 import Footer from './components/footer.jsx'
+import Header from './components/header.jsx'
 import './styles/style.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
         <Nav />
         <main>
+          <Header />
           <Routes>
           <Route path="/" 
           element={
