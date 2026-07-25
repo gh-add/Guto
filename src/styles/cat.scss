@@ -1,0 +1,847 @@
+$duration-intro: 5s;
+$total-kf-intro: 5;
+
+:root {
+  --dark-sienna: #33292b;
+  --dark-puce: #362b2c;
+  --dark-chestnut: #423131;
+  --parchment: #f7f4ed;
+  --dusty-pink: #cb7998;
+  --transparent: trasparent;
+}
+
+
+@mixin effect($name, $kf) {
+  @keyframes #{$name} {
+    @each $interval, $props in $kf {
+      #{calc(($interval / $total-kf-intro) * 100%)} {
+        @each $prop, $value in $props {
+          #{$prop}: $value;
+        }
+      }
+    }
+  }
+}
+
+$k-face-right: (
+  0: (transform: rotate(0deg) translate(0, 0),
+    width: 130px,
+    height: 100px,
+    border-radius: 150% 150% 170% 170%,
+    background: radial-gradient(circle at 2% 60%, var(--dark-chestnut), var(--dark-sienna) 0%)),
+  0.3:(background: radial-gradient(circle at 4% 60%, var(--dark-chestnut), var(--dark-sienna) 12%)),
+  0.5:(background: radial-gradient(circle at 5.5% 60%, var(--dark-chestnut), var(--dark-sienna) 13%)),
+  0.6:(background: radial-gradient(circle at 7.5% 60%, var(--dark-chestnut), var(--dark-sienna) 14%)),
+  0.7:(background: radial-gradient(circle at 9.5% 60%, var(--dark-chestnut), var(--dark-sienna) 15%)),
+  0.8:(background: radial-gradient(circle at 11% 60%, var(--dark-chestnut), var(--dark-sienna) 17%)),
+  0.9:(background: radial-gradient(circle at 12.5% 60%, var(--dark-chestnut), var(--dark-sienna) 19%)),
+  1: (transform: rotate(-15deg) translate(-3px, 0),
+    width: 128px,
+    height: 102px,
+    border-radius: 125% 125% 105% 130%,
+    background: radial-gradient(circle at 15.5% 60%, var(--dark-chestnut), var(--dark-sienna) 22%)),
+  1.2:((background: radial-gradient(circle at 21.5% 60%, var(--dark-chestnut), var(--dark-sienna) 24%))),
+  1.5:((background: radial-gradient(circle at 24% 60%, var(--dark-chestnut), var(--dark-sienna) 26%))),
+  1.8:((background: radial-gradient(circle at 28% 60%, var(--dark-chestnut), var(--dark-sienna) 28%))),
+  2: (transform: rotate(-30deg) translate(-5px, 0),
+    width: 125px,
+    height: 105px,
+    border-radius: 100% 100% 40% 90%,
+    background: radial-gradient(circle at 32% 60%, var(--dark-chestnut), var(--dark-sienna) 30%)),
+  3: (transform: rotate(-30deg) translate(-5px, 0),
+    width: 125px,
+    height: 105px,
+    border-radius: 100% 100% 40% 90%,
+    background: radial-gradient(circle at 32% 60%, var(--dark-chestnut), var(--dark-sienna) 30%)),
+  3.2:((background: radial-gradient(circle at 28% 60%, var(--dark-chestnut), var(--dark-sienna) 28%))),
+  3.5:((background: radial-gradient(circle at 24% 60%, var(--dark-chestnut), var(--dark-sienna) 26%))),
+  3.8:((background: radial-gradient(circle at 21.5% 60%, var(--dark-chestnut), var(--dark-sienna) 24%))),
+  4: (transform: rotate(-15deg) translate(-3px, 0),
+    width: 128px,
+    height: 102px,
+    border-radius: 125% 125% 105% 130%,
+    background: radial-gradient(circle at 15.5% 60%, var(--dark-chestnut), var(--dark-sienna) 22%)),
+  4.3:(background: radial-gradient(circle at 12.5% 60%, var(--dark-chestnut), var(--dark-sienna) 20%)),
+  4.5:(background: radial-gradient(circle at 11% 60%, var(--dark-chestnut), var(--dark-sienna) 17%)),
+  4.6:(background: radial-gradient(circle at 9.5% 60%, var(--dark-chestnut), var(--dark-sienna) 15%)),
+  4.7:(background: radial-gradient(circle at 7.5% 60%, var(--dark-chestnut), var(--dark-sienna) 14%)),
+  4.8:(background: radial-gradient(circle at 5.5% 60%, var(--dark-chestnut), var(--dark-sienna) 13%)),
+  4.9:(background: radial-gradient(circle at 4% 60%, var(--dark-chestnut), var(--dark-sienna) 12%)),
+  5: (transform: rotate(0deg) translate(0, 0),
+    width: 130px,
+    height: 100px,
+    border-radius: 150% 150% 170% 170%,
+    background: radial-gradient(circle at 2% 60%, var(--dark-chestnut), var(--dark-sienna) 0%)),
+);
+
+$k-face-after-right: (
+  0: (width: 60px,
+    height: 35px,
+    border-radius: 50% 50% 60% 60%,
+    background: radial-gradient(circle at 50% 40%, var(--dark-chestnut), var(--dark-sienna) 80%),
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.08),
+    transform: translateX(-50%) rotate(0deg)),
+  0.3:(background: radial-gradient(circle at 55% 38%, var(--dark-chestnut), var(--dark-sienna) 75%), z-index: 2),
+  0.6:(background: radial-gradient(circle at 60% 35%, var(--dark-chestnut), var(--dark-sienna) 70%), z-index: 2),
+  1: (width: 55px,
+    height: 40px,
+    border-radius: 50% 45% 80% 60%,
+    background: radial-gradient(circle at 65% 35%, var(--dark-chestnut), var(--dark-sienna) 65%),
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.04),
+    transform: translateX(-25%) translate(20%, 11%) rotate(0deg),
+    z-index: 2),
+  1.3:(background: radial-gradient(circle at 70% 30%, var(--dark-chestnut), var(--dark-sienna) 55%),
+    height: 43px,
+    border-radius: 50% 45% 90% 60%,
+    z-index: 2),
+  1.6:(background: radial-gradient(circle at 75% 30%, var(--dark-chestnut), var(--dark-sienna) 50%),
+    height: 44px,
+    z-index: 2),
+  2: (width: 50px,
+    height: 45px,
+    border-radius: 50% 40% 100% 60%,
+    background: radial-gradient(circle at 80% 30%, var(--dark-chestnut), var(--dark-sienna) 45%),
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0),
+    transform: translate(40%, 22%) rotate(0deg),
+    z-index: 2),
+  3: (width: 50px,
+    height: 45px,
+    border-radius: 50% 40% 100% 60%,
+    background: radial-gradient(circle at 80% 30%, var(--dark-chestnut), var(--dark-sienna) 45%),
+    box-shadow: inset 0 0 0 rgba(0, 0, 0, 0),
+    transform: translate(40%, 22%) rotate(0deg), z-index: 2,
+  ),
+  3.3:(background: radial-gradient(circle at 75% 30%, var(--dark-chestnut), var(--dark-sienna) 50%),
+    height: 44px, z-index: 2),
+  3.5:(background: radial-gradient(circle at 70% 30%, var(--dark-chestnut), var(--dark-sienna) 55%),
+    height: 43px,
+    border-radius: 50% 45% 90% 60%, z-index: 2
+    ),
+  4: (width: 55px,
+    height: 40px,
+    border-radius: 50% 45% 80% 60%,
+    background: radial-gradient(circle at 65% 35%, var(--dark-chestnut), var(--dark-sienna) 65%),
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.04),
+    transform: translate(-15%, 7%) rotate(0deg),
+    z-index: 1
+  ),
+  4.3:(background: radial-gradient(circle at 60% 35%, var(--dark-chestnut), var(--dark-sienna) 70%), z-index: 1),
+  4.6:(background: radial-gradient(circle at 55% 38%, var(--dark-chestnut), var(--dark-sienna) 75%), z-index: 1 ),
+  5: (width: 60px,
+    height: 35px,
+    border-radius: 50% 50% 60% 60%,
+    background: radial-gradient(circle at 50% 40%, var(--dark-chestnut), var(--dark-sienna) 80%),
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.08),
+    transform: translateX(-50%) rotate(0deg),
+    z-index: 1
+  ),
+
+);
+
+$k-ear1-right: (
+  0: (width: 90px,
+    height: 80px,
+    transform: translate(0px, 0px) scaleX(-1) rotate(40deg),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-puce), var(--dark-chestnut))),
+  0.2: (width: 91px,
+    height: 81px,
+    transform: translate(-1.1px, 0.6px) scaleX(-1) rotate(40.5deg)),
+  0.35: (width: 91.75px,
+    height: 81.75px,
+    transform: translate(-1.85px, 1.05px) scaleX(-1) rotate(40.875deg)),
+  0.5: (width: 92.5px,
+    height: 82.5px,
+    transform: translate(-2.6px, 1.7px) scaleX(-1) rotate(41.25deg)),
+  0.65: (width: 93.25px,
+    height: 83.25px,
+    transform: translate(-3.50px, 2.2px) scaleX(-1) rotate(41.625deg)),
+  0.8: (width: 94px,
+    height: 84px,
+    transform: translate(-4.2px, 2.6px) scaleX(-1) rotate(42deg)),
+  1: (width: 95px,
+    height: 85px,
+    transform: translate(-5.5px, 3px) scaleX(-1) rotate(42.5deg)),
+  1.2: (width: 96px,
+    height: 86px,
+    transform: translate(-6.6px, 3.6px) scaleX(-1) rotate(43deg)),
+  1.35: (width: 96.75px,
+    height: 86.75px,
+    transform: translate(-7.425px, 4.05px) scaleX(-1) rotate(43.375deg)),
+  1.5: (width: 97.5px,
+    height: 87.5px,
+    transform: translate(-8.25px, 4.5px) scaleX(-1) rotate(43.75deg)),
+  1.65: (width: 98.25px,
+    height: 88.25px,
+    transform: translate(-9.075px, 4.95px) scaleX(-1) rotate(44.125deg)),
+  1.8: (width: 99px,
+    height: 89px,
+    transform: translate(-9.9px, 5.4px) scaleX(-1) rotate(44.5deg)),
+  2: (width: 100px,
+    height: 90px,
+    transform: translate(-11px, 6px) scaleX(-1) rotate(45deg),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-puce), var(--dark-chestnut))),
+  3: (width: 100px,
+    height: 90px,
+    transform: translate(-11px, 6px) scaleX(-1) rotate(45deg),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-puce), var(--dark-chestnut)))
+);
+
+
+$k-earr-right: (
+  0: (width: 90px,
+    height: 80px,
+    transform: translate(0px, 0px) rotate(40deg),
+    clip-path: polygon(14% 74%, 13% 60%, 14% 37%, 20% 9%, 36% 18%, 50% 30%, 63% 50%, 71% 73%, 56% 93%, 35% 95%, 19% 91%),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-puce), var(--dark-chestnut))),
+  0.3:(background: linear-gradient(to top, var(--dark-sienna), var(--dark-sienna), var(--dark-chestnut))),
+  1: (width: 95px,
+    height: 85px,
+    transform: translate(-34.5px, -7.5px) rotate(20deg),
+    clip-path: polygon(27% 62%, 31.5% 45%, 38% 27.5%, 48% 13.5%, 59% 27.5%, 67% 45%, 72.5% 61.5%, 74.5% 82%, 60% 94%, 40.5% 94%, 25.5% 82%),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-sienna), var(--dark-chestnut))),
+  1.5: (width: 97.5px,
+    height: 87.5px,
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-sienna), var(--dark-chestnut))),
+  2: (width: 100px,
+    height: 90px,
+    transform: translate(-69px, -15px) rotate(0deg),
+    clip-path: polygon(40% 50%, 50% 30%, 62% 18%, 76% 9%, 82% 37%, 84% 60%, 82% 74%, 78% 91%, 64% 95%, 46% 93%, 32% 73%),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-sienna), var(--dark-chestnut))),
+  3: (width: 100px,
+    height: 90px,
+    transform: translate(-69px, -15px) rotate(0deg),
+    clip-path: polygon(40% 50%, 50% 30%, 62% 18%, 76% 9%, 82% 37%, 84% 60%, 82% 74%, 78% 91%, 64% 95%, 46% 93%, 32% 73%),
+    background: linear-gradient(to top, var(--dark-sienna), var(--dark-sienna), var(--dark-chestnut)))
+);
+
+$k-nose-right: (
+  0: (transform: rotate(0deg),
+    left: 60px,
+    bottom: 100px,
+    border-top: 8px solid var(--dusty-pink),
+    border-left: 7px solid transparent,
+    border-right: 7px solid transparent,
+    border-radius: 15px,
+    z-index: 3),
+  1: (transform: rotate(-10deg),
+    left: 107px,
+    bottom: 107px,
+    border-radius: 16px,
+    z-index: 3),
+  2: (transform: rotate(-20deg),
+    left: 125px,
+    bottom: 115px,
+    border-top: 9px solid var(--dusty-pink),
+    border-left: 4px solid transparent,
+    border-right: 3px solid transparent,
+    border-radius: 18px,
+    z-index: 3),
+  3: (transform: rotate(-20deg),
+    left: 125px,
+    bottom: 115px,
+    border-top: 9px solid var(--dusty-pink),
+    border-left: 4px solid transparent,
+    border-right: 3px solid transparent,
+    border-radius: 18px,
+    z-index: 3),
+  5:(z-index:3),
+
+);
+
+
+$k-l1-right: (
+  0: (transform: rotate(95deg), right: 38px, bottom: 22px),
+  2: (transform: rotate(90deg), right: 34px, bottom: 24px),
+  3: (transform: rotate(90deg), right: 34px, bottom: 24px),
+);
+
+$k-l2-right: (
+  0: (transform: rotate(-95deg), left: 35px, bottom: 66px),
+  1: (transform: rotate(-75deg), left: 22px, bottom: 58px, height:37px),
+  2: (transform: rotate(-50deg), left: 13px, bottom: 45px, height:30px),
+  3: (transform: rotate(-50deg), left: 13px, bottom: 45px, height:30px)
+);
+
+$k-l3-right: (
+  0: (transform: rotate(85deg), right: 35px, bottom: 94px),
+  1: (right: 33px, bottom: 90px),
+  2: (transform: rotate(80deg), right: 31px, bottom: 85px),
+  3: (transform: rotate(80deg), right: 31px, bottom: 85px)
+);
+
+$k-l4-right: (
+  0: (transform: rotate(-85deg), left: 33px, bottom: 130px),
+  1: (transform: rotate(-65deg), left: 18px, bottom: 118px, height: 28px),
+  2: (transform: rotate(-40deg), left: 6px, bottom: 102px, height: 22px),
+  3: (transform: rotate(-40deg), left: 6px, bottom: 102px, height: 22px)
+);
+
+$k-eye1-right: (
+  0: (left: 20px, bottom: 141px, border-radius: 50% 80%),
+  1:(left: 50px, bootom: 151px, border-radius: 40% 80%),
+  2: (left: 72px, bottom: 160px, border-radius: 30% 80%),
+  3: (left: 72px, bottom: 160px, border-radius: 30% 80%)
+);
+
+$k-eyeball1-right: (
+  0:(height: 25px, width: 17px, top: 9px, left: 10px),
+  1:(),
+  2:(height: 23px, width: 12px, top: 12px, left: 25px),
+  3:(height: 23px, width: 12px, top: 12px, left: 25px)
+);
+
+$k-eyeballr-right: (
+  0: (height: 25px,
+    width: 17px,
+    top: 9px,
+    left: 10px,
+    transform: translateX(0) translateY(0) rotate(0deg) scaleX(1) scaleY(1)),
+  1: (height: 24px,
+    width: 17px,
+    top: 10px,
+    left: 10px,
+    transform: translateX(-5px) translateY(-2px) rotate(10deg) scaleX(0.9) scaleY(0.95),
+    z-index: 1),
+  2: (height: 26px,
+    width: 30px,
+    top: 10px,
+    left: 5.5px,
+    border-radius: 100%,
+    transform: roate(0deg) scaleX(0.7) scaleY(0.9),
+    z-index: 1),
+  3: (height: 26px,
+    width: 17px,
+    top: 7px,
+    left: 7px,
+    border-radius: 100%,
+    transform: roate(10deg) scaleX(0.7) scaleY(0.9),
+    z-index: 1),
+  4: (height: 25px,
+    width: 17px,
+    top: 8px,
+    left: 10px,
+    transform: scaleX(0.95) scaleY(0.95)),
+  5: (height: 25px,
+    width: 17px,
+    top: 9px,
+    left: 10px,
+    transform: translateX(0) translateY(0) rotate(0deg) scaleX(1) scaleY(1)),
+);
+
+
+$k-eyer-right: (
+  0: (left: 75px,
+    bottom: 176px,
+    border-radius: 80% 50%,
+    height: 35px,
+    width: 38px,
+    transform: scaleX(1) scaleY(1) rotate(0deg),
+  ),
+  1: (left: 99px,
+    bottom: 183px,
+    border-radius: 80% 60%,
+    height: 34px,
+    width: 30px,
+    transform: scaleX(0.7) scaleY(0.90) rotate(-7deg),
+    box-shadow: inset 0.2px 0px 1px var(--dark-sienna),
+    z-index: 1),
+  2: (left: 111px,
+    bottom: 185px,
+    border-radius: 100%,
+    height: 33px,
+    width: 25px,
+    transform: scaleX(0.0) scaleY(0.60) rotate(60deg),
+    opacity: 0.9,
+    border-left: 2px solid var(--dark-sienna),
+    box-shadow: inset 0.3px 0px 4px var(--dark-sienna),
+    z-index: 1),
+  3: (left: 111px,
+    bottom: 181px,
+    border-radius: 100%,
+    height: 33px,
+    width: 25px,
+    transform: scaleX(0.0) scaleY(0.8),
+    opacity: 0.9,
+    z-index: 1),
+  3.5:(left: 100px,
+    bottom: 181px,
+    height: 34px,
+    width: 35px,
+    transform: scaleX(0.4) scaleY(0.85),
+  ),
+  4:(
+    height: 34px,
+    width: 37px,
+    transform: translateX(-1.5px) scaleX(0.65) scaleY(0.95)
+  ),
+  4.5: (
+    bottom: 178px,
+    border-radius: 80% 50%,
+    height: 35px,
+    width: 37px,
+    transform: scaleX(0.9) scaleY(1),
+  ),
+  5: (left: 75px,
+    bottom: 176px,
+    border-radius: 80% 50%,
+    height: 35px,
+    width: 38px,
+    transform: scaleX(1) scaleY(1) rotate(0deg),
+  )
+);
+
+
+
+@include effect('face-intro', $k-face-right);
+@include effect('face-after-intro', $k-face-after-right);
+@include effect('ear1-intro', $k-ear1-right);
+@include effect('earr-intro', $k-earr-right);
+@include effect('nose-intro', $k-nose-right);
+@include effect('l1-intro', $k-l1-right);
+@include effect('l2-intro', $k-l2-right);
+@include effect('l3-intro', $k-l3-right);
+@include effect('l4-intro', $k-l4-right);
+@include effect('eye1-intro', $k-eye1-right);
+@include effect('eyer-intro', $k-eyer-right);
+@include effect('eyeball1-intro', $k-eyeball1-right);
+@include effect('eyeballr-intro', $k-eyeballr-right);
+
+@keyframes eye-blink {
+
+  0%,
+  10%,
+  100% {
+    transform: scaleY(1);
+    /* olho aberto na maior parte do tempo */
+  }
+
+  5% {
+    transform: scaleY(0.05);
+    /* olho quase fechado, achatado */
+  }
+}
+
+@keyframes eyeball-blink {
+
+  0%,
+  10%,
+  100% {
+    opacity: 1;
+  }
+
+  2%,
+  6% {
+    opacity: 0;
+    /* bolinha do olho some durante o "fechado" */
+  }
+}
+
+@keyframes tail-wave {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  50% {
+    transform: rotate(20deg) translate(0, 10px);
+  }
+
+  100% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+}
+
+@keyframes face-turn {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+
+  50%,
+  100% {
+    transform: rotate(15deg) translate(5px, 0);
+  }
+
+}
+
+@keyframes eyeball-stare {
+
+  0%,
+  100% {
+    top: 9px;
+    left: 10px;
+  }
+
+  50% {
+    top: 10.5px;
+    left: 10px;
+  }
+}
+
+.cat-row .cat .face .eye-1 {
+  animation: eye1-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards,
+    eye-blink 3s ease-in-out $duration-intro infinite;
+}
+
+.cat-row .cat .face .eye-r {
+  animation: eyer-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards,
+    eye-blink 3s ease-in-out $duration-intro infinite;
+}
+
+.cat-row .cat .face .eye-1 .eyeball {
+  animation: eyeball1-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards,
+    eyeball-blink 3s ease-in-out $duration-intro infinite;
+}
+
+.cat-row .cat .face .eye-r .eyeball {
+  animation: eyeballr-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards,
+    eyeball-blink 3s ease-in-out $duration-intro infinite;
+}
+
+.cat-row .cat .l1 {
+  animation: l1-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .l2 {
+  animation: l2-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .l3 {
+  animation: l3-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .l4 {
+  animation: l4-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .nose {
+  animation: nose-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .face {
+  animation: face-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards,
+    face-turn 4s $duration-intro forwards;
+}
+
+.cat-row .cat .face::after {
+  animation: face-after-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .ear-1 {
+  animation: ear1-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .ear-r {
+  animation: earr-intro $duration-intro cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.cat-row .cat .tail {
+  animation: tail-wave 4s $duration-intro forwards;
+}
+
+.cat-col .cat .face .eye-1 .eyeball,
+.cat-col .cat .face .eye-r .eyeball {
+  animation: eyeball-blink 3s ease-in-out infinite;
+}
+
+.cat-col .cat .face .eye-1,
+.cat-col .cat .face .eye-r {
+  animation: eye-blink 3s ease-in-out infinite;
+}
+
+.cat-col .cat .face {
+  animation: face-turn 4s forwards;
+}
+
+.cat-col .cat .tail {
+  animation: tail-wave 4s forwards;
+}
+
+
+.cat-row .cat,
+.cat-col .cat {
+  animation: none !important; // limpa qualquer animação anterior
+}
+
+#cat-container {
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cat {
+  padding: 15px;
+  height: 350px;
+}
+
+.face {
+  background: radial-gradient(circle at 40% 60%, var(--dark-sienna), var(--dark-sienna) 30%);
+  height: 100px;
+  width: 130px;
+  border-radius: 150% 150% 170% 170%;
+  position: relative;
+  left: 45px;
+  bottom: -10px;
+  z-index: 1;
+}
+
+.face::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  /* ajusta a posição vertical do focinho */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  /* largura do focinho, menor que a face */
+  height: 35px;
+  /* altura/elevação do focinho */
+  background: radial-gradient(circle at 50% 40%, var(--dark-chestnut), var(--dark-sienna) 80%);
+  /* mesma cor da face pra parecer contínuo */
+  border-radius: 50% 50% 60% 60%;
+  /* forma arredondada, tipo bochecha/focinho */
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.ear-1,
+.ear-r {
+  width: 90px;
+  height: 80px;
+  background: linear-gradient(to top, var(--dark-sienna), var(--dark-puce), var(--dark-chestnut));
+  clip-path: polygon(14% 74%, 13% 60%, 14% 37%, 20% 9%, 36% 18%, 50% 30%, 63% 50%, 71% 73%, 56% 93%, 35% 95%, 19% 91%);
+  position: relative;
+  z-index: 1;
+}
+
+.ear-1 {
+  bottom: 41px;
+  left: -38px;
+  transform: scalex(-1) rotate(40deg);
+}
+
+.ear-r {
+  bottom: 120px;
+  left: 79px;
+  transform: rotate(40deg);
+  /* inverte no eixo X */
+}
+
+.eye-1,
+.eye-r {
+  background-color: var(--bs-parchment);
+  height: 36px;
+  width: 38px;
+  box-shadow:
+    0 -10px 7px -0.5px rgba(0, 0, 0, 0.1),
+    0 10px 8px -0.5px rgba(0, 0, 0, 0.1);
+  transform-origin: center;
+  position: relative;
+}
+
+.eye-1 {
+  bottom: 141px;
+  left: 20px;
+  border-radius: 50% 80%;
+  z-index: 3;
+}
+
+.eye-r {
+  bottom: 176px;
+  left: 75px;
+  border-radius: 80% 50%;
+  z-index: 3;
+}
+
+.eyeball {
+  background-color: #262626;
+  height: 25px;
+  width: 17px;
+  border-radius: 70%;
+  position: relative;
+  top: 9px;
+  left: 10px;
+}
+
+.nose {
+  height: 0;
+  width: 0;
+  border-top: 8px solid var(--dusty-pink);
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-radius: 15px;
+  position: relative;
+  bottom: 100px;
+  left: 60px;
+  cursor: pointer;
+  z-index: 4;
+
+}
+
+.l1,
+.l2,
+.l3,
+.l4 {
+  background-color: var(--bs-parchment);
+  width: 1px;
+  position: relative;
+}
+
+.l1,
+.l2 {
+  height: 44px;
+}
+
+.l3,
+.l4 {
+  height: 35px;
+}
+
+.l1 {
+  transform: rotate(95deg);
+  right: 38px;
+  bottom: 22px;
+}
+
+.l2 {
+  transform: rotate(-95deg);
+  left: 35px;
+  bottom: 66px;
+}
+
+.l3 {
+  transform: rotate(85deg);
+  right: 35px;
+  bottom: 94px;
+}
+
+.l4 {
+  transform: rotate(-85deg);
+  left: 33px;
+  bottom: 129px;
+}
+
+.upper-body {
+  background: radial-gradient(circle at 50% 65%, var(--dark-chestnut), var(--dark-puce), var(--dark-sienna) 60%);
+  height: 180px;
+  width: 220px;
+  position: relative;
+  top: -13px;
+  /* formato tipo Pou */
+  border-radius: 40px;
+  clip-path: polygon(49% 0%,
+      /* topo central */
+      55% 0%,
+      /* topo ligeiro à direita */
+      65% 11%,
+      /* curva direita alta */
+      71% 20%,
+      /* descendo lado direito */
+      76% 30%,
+      /* curva direita média */
+      79% 40%,
+      /* curva direita baixa */
+      81% 58%,
+      /* quase base direita */
+      19% 58%,
+      /* quase base esquerda */
+      21% 40%,
+      /* curva esquerda baixa */
+      24% 30%,
+      /* curva esquerda média */
+      29% 20%,
+      /* descendo lado esquerdo */
+      35% 11%,
+      /* curva esquerda alta */
+      45% 0%
+      /* topo ligeiro à esquerda */
+    );
+  z-index: -1;
+}
+
+.lower-body {
+  background: radial-gradient(circle at 50% 60%, var(--dark-chestnut), var(--dark-puce), var(--dark-sienna) 60%);
+  height: 180px;
+  width: 190px;
+  position: relative;
+  top: -186px;
+  left: 15px;
+  /* formato tipo Pou */
+  border-radius: 40px;
+  clip-path: polygon(4% 74%,
+      /* curva esquerda alta */
+      9% 61%,
+      /* descendo lado esquerdo */
+      15% 51%,
+      /* parte média esquerda */
+      85% 51%,
+      /* parte média direita */
+      91% 61%,
+      /* descendo lado direito */
+      96% 74%,
+      /* curva direita alta */
+      99% 88%,
+      /* quase base direita */
+      93% 97%,
+      /* canto inferior direito arredondado */
+      85% 100%,
+      /* base direita */
+      15% 100%,
+      /* base esquerda */
+      7% 97%,
+      /* canto inferior esquerdo arredondado */
+      1% 88%
+      /* quase base esquerda */
+    );
+
+  z-index: -1;
+}
+
+.paw-1,
+.paw-2 {
+  background: linear-gradient(to bottom, var(--dark-puce), var(--dark-chestnut));
+  height: 100px;
+  width: 80px;
+  position: relative;
+  clip-path: polygon(18% 97%, 16% 90%, 16% 21%, 71% 0%, 60% 44%, 50% 86%, 43% 95%, 33% 99%, 23% 100%, 28% 91%, 20% 100%, 23% 90%);
+  border-radius: 0 0 10px 10px;
+  top: -400px;
+}
+
+.paw-1 {
+  top: -322px;
+  left: 20px;
+  transform: scaleX(-1);
+  /* inverte no eixo X */
+
+}
+
+.paw-2 {
+  top: -432px;
+  left: 121px;
+  transform: rotate(0deg);
+}
+
+.tail {
+  background: radial-gradient(ellipse at 50% 10%, var(--dark-chestnut), var(--dark-sienna) 90%);
+  width: 180px;
+  height: 70px;
+  position: relative;
+  top: -265px;
+  left: -100px;
+  border-radius: 80px 0px 0px 100px;
+  clip-path: polygon(0 -15%, 100% 60%, 100% 90%, 0 100%);
+  transform-origin: center right;
+  /* ajuste conforme a posição da sua cauda */
+  z-index: -2;
+}
+
+.shadow {
+  background-color: rgba(8, 8, 8, 0.01);
+  height: 10px;
+  width: 180px;
+  border-radius: 50%;
+  position: relative;
+  top: -480px;
+  left: 20px;
+  z-index: -2;
+}
