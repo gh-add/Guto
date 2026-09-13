@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import Nav from './components/nav.jsx'
 import About from './components/session/about.jsx'
-import Cinegrafia from './components/session/cinegrafia.jsx'
+import Skills from './components/session/skills.jsx'
 import Projects from './components/session/projects.jsx'
 import Musics from './components/session/musics.jsx'
 import Footer from './components/footer.jsx'
 import Header from './components/header.jsx'
-import './styles/style.css'
+import './styles/Globalstyle.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,15 +21,14 @@ function App() {
             <>
             <About />
             <Projects />
+            <Skills />
             <Musics />
-            <Cinegrafia />
             </>
             } />
           </Routes>
         </main>
-        <Routes>
-          <Route path="/" element={<Footer />} />
-        </Routes>
+        <div className="project-modal"></div>
+        <Footer />
     </BrowserRouter>
   )
 }

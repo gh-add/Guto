@@ -21,7 +21,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav className="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div className="container px-4 px-lg-5">
         <a className="navbar-brand" href="#page-top">Guto</a>
         <button
@@ -36,11 +36,10 @@ const Nav = () => {
         </button>
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarResponsive">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item"><a className="nav-link" href="#about">Sobre</a></li>
+            <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
             <li className="nav-item"><a className="nav-link" href="#projects">Software</a></li>
-            <li className="nav-item"><a className="nav-link" href="#musics">Músicas</a></li>
-            <li className="nav-item"><a className="nav-link" href="#cinegrafia">Cinegrafia</a></li>
-            <li className="nav-item"><a className="nav-link" href="#licenca">Licença</a></li>
+            <li className="nav-item"><a className="nav-link" href="#skills">Skills</a></li>
+            <li className="nav-item"><a className="nav-link" href="#musics">Playlist</a></li>
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item"><a className="nav-link" href="#email"><i className="bi bi-envelope"></i></a></li>
